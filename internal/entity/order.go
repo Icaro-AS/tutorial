@@ -9,8 +9,13 @@ type Order struct {
 	FinalPrice float64
 }
 
-func (o *Order) CalculateFinalPrice() {
+func (o *Order) CalculateFinalPrice() error {
 	o.FinalPrice = o.Price + o.Tax
+	err := o.Validate()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func NewOrder(id string, price float64, tax float64) (*Order, error) {
