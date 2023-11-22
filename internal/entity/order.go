@@ -44,7 +44,7 @@ func (o *Order) Validate() error {
 	}
 
 	if o.Tax <= 0 {
-		return errors.New("tax must be greater than zero")
+		return errors.New("invalid tax")
 	}
 
 	return nil
